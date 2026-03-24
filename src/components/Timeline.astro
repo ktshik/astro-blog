@@ -31,19 +31,14 @@ const formatDate = (date: dayjs.Dayjs | string) =>
 
 <div>
   <p
-    class="text-xs font-medium uppercase tracking-[0.2em] text-[var(--fg-muted)] mb-4 subheading"
+    class="text-sm font-medium uppercase tracking-[0.18em] text-[var(--fg-muted)] mb-3 subheading"
   >
     Experience
   </p>
-  <ol
-    class="relative border-s border-dotted [border-color:var(--line)] ms-1.5"
-  >
+  <ol class="timeline">
     {
       timelineSteps.map((timelineStep) => (
-        <li class="relative mb-10 ms-5 last:mb-0">
-          <div
-            class="absolute w-2 h-2 rounded-full mt-1.5 -start-[5px] border border-dotted [border-color:var(--line)] bg-[var(--bg-elevated)]"
-          />
+        <li>
           <time class="mb-1 block text-sm font-normal leading-none text-[var(--fg-muted)] tabular-nums">
             {formatDate(timelineStep.startDate)}
             {timelineStep.endDate && ` — ${formatDate(timelineStep.endDate)}`}
@@ -55,7 +50,7 @@ const formatDate = (date: dayjs.Dayjs | string) =>
               — {timelineStep.company}
             </span>
           </h3>
-          <p class="text-[15px] font-normal leading-relaxed text-[var(--fg-muted)]">
+          <p class="text-sm font-normal leading-relaxed text-[var(--fg-muted)]">
             {timelineStep.description}
           </p>
           {timelineStep.extra}

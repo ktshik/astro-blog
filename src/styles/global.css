@@ -56,7 +56,7 @@ html {
 }
 
 body {
-  @apply font-[Inter];
+  @apply font-[Inter] text-[1.09375rem];
   position: relative;
   background: var(--bg);
   color: var(--fg);
@@ -270,4 +270,52 @@ html.dark .theme-toggle__icon--sun {
 
 html.dark .theme-toggle__icon--moon {
   display: block;
+}
+
+.section {
+  @apply border-l border-dotted [border-color:var(--line)] px-5 py-3;
+}
+
+/* Timeline: one vertical guide; dots sit on top with solid fill so the line reads centered */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.4375rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  border-left: 1px dotted var(--line);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.timeline > li {
+  position: relative;
+  padding-left: 1.375rem;
+  padding-bottom: 2.5rem;
+}
+
+.timeline > li:last-child {
+  padding-bottom: 0;
+}
+
+/* 8px dot; center x = 0.4375rem → left = 0.1875rem */
+.timeline > li::before {
+  content: "";
+  position: absolute;
+  left: 0.1875rem;
+  top: 0.45rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  box-sizing: border-box;
+  z-index: 1;
 }

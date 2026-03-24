@@ -11,13 +11,13 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 <Root title={title} description={description} image={heroImage}>
   <a
-    class="inline-flex items-center gap-2 py-2 -mt-2 mb-6 text-sm text-[var(--fg-muted)] transition-colors hover:text-[var(--fg)]"
+    class="inline-flex items-center gap-2 py-1.5 -mt-1 mb-5 text-sm text-[var(--fg-muted)] transition-colors hover:text-[var(--fg)]"
     href="/blog"
   >
     <BackArrowIcon /><span class="underline decoration-dotted underline-offset-4">Back to posts</span>
   </a>
   <article>
-    <div class="hero-image !mb-6">
+    <div class="hero-image !mb-5">
       {
         heroImage && (
           <img
@@ -29,7 +29,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       }
     </div>
     <div class="prose">
-      <div class="title !mb-8 pb-8 border-b border-dotted [border-color:var(--line)]">
+      <div class="title !mb-8 pb-6 border-b border-dotted [border-color:var(--line)]">
         <h1>{title}</h1>
         <div class="date mt-3 text-sm text-[var(--fg-muted)] tabular-nums">
           <FormattedDate date={pubDate} />
