@@ -19,35 +19,41 @@ const categories: ShieldCategory[] = [
       { label: "typescript", color: "3178C6", icon: "typescript" },
     ],
   },
-  {
-    title: "Frameworks",
-    shields: [
-      { label: "nestjs", color: "E0234E", icon: "nestjs" },
-      { label: "next.js", color: "000000", icon: "nextdotjs" },
-      { label: "react", color: "61DAFB", icon: "react" },
-      { label: "tailwind", color: "06B6D4", icon: "tailwindcss" },
-    ],
-  },
+  // {
+  //   title: "Frameworks",
+  //   shields: [
+  //     { label: "nestjs", color: "E0234E", icon: "nestjs" },
+  //     { label: "next.js", color: "000000", icon: "nextdotjs" },
+  //     { label: "react", color: "61DAFB", icon: "react" },
+  //     { label: "tailwind", color: "06B6D4", icon: "tailwindcss" },
+  //   ],
+  // },
   {
     title: "Data",
     shields: [
       { label: "postgres", color: "4169E1", icon: "postgresql" },
       { label: "mongodb", color: "47A248", icon: "mongodb" },
+      { label: "redis", color: "FF4438", icon: "redis" },
+      { label: "bigquery", color: "669DF6", icon: "googlebigquery" },
     ],
   },
   {
     title: "Infrastructure",
     shields: [
       { label: "docker", color: "2496ED", icon: "docker" },
-      { label: "linux", color: "FCC624", icon: "linux", iconColor: "black" },
       { label: "aws", color: "232F3E", icon: "amazonwebservices" },
+      { label: "gcp", color: "4285F4", icon: "googlecloud" },
       { label: "terraform", color: "844FBA", icon: "terraform" },
       { label: "cloudflare", color: "F38020", icon: "cloudflare" },
     ],
   },
   {
     title: "AI",
-    shields: [{ label: "openai", color: "412991", icon: "openai" }],
+    shields: [
+      { label: "cursor", color: "000000", icon: "cursor" },
+      { label: "claude", color: "D97757", icon: "claude" },
+      { label: "openai", color: "412991", icon: "openai" },
+    ],
   },
 ];
 
@@ -61,7 +67,7 @@ const constructShieldUrl = (shield: ShieldData) =>
   {
     categories.map((category) => (
       <div>
-        <p class="text-[0.7125rem] font-medium uppercase tracking-[0.1em] text-[var(--fg-muted)] mb-1">
+        <p class="text-[0.7125rem] font-medium uppercase tracking-[0.18em] text-[var(--fg-muted)] mb-1">
           {category.title}
         </p>
         <div class="flex flex-wrap gap-1 opacity-90 contrast-[0.97]">
