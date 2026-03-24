@@ -246,7 +246,6 @@ h3 {
   width: 2.25rem;
   height: 2.25rem;
   padding: 0;
-  border: 1px dotted var(--line);
   border-radius: 2px;
   background: transparent;
   color: var(--fg-muted);
@@ -273,10 +272,11 @@ html.dark .theme-toggle__icon--moon {
 }
 
 .section {
-  @apply border-l border-dotted [border-color:var(--line)] px-5 py-3;
+  --section-pl: 1.25rem;
+  @apply border-l border-dotted [border-color:var(--line)] py-3 px-[var(--section-pl)];
 }
 
-/* Timeline: one vertical guide; dots sit on top with solid fill so the line reads centered */
+/* Timeline: no inner rail — dots sit on .section’s left border (centered on the 1px line) */
 .timeline {
   list-style: none;
   margin: 0;
@@ -284,20 +284,9 @@ html.dark .theme-toggle__icon--moon {
   position: relative;
 }
 
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 0.4375rem;
-  top: 0.5rem;
-  bottom: 0.5rem;
-  border-left: 1px dotted var(--line);
-  pointer-events: none;
-  z-index: 0;
-}
-
 .timeline > li {
   position: relative;
-  padding-left: 1.375rem;
+  padding-left: 1.25rem;
   padding-bottom: 2.5rem;
 }
 
@@ -305,12 +294,13 @@ html.dark .theme-toggle__icon--moon {
   padding-bottom: 0;
 }
 
-/* 8px dot; center x = 0.4375rem → left = 0.1875rem */
+/* 8px dot: center on border = -padding - half border + half dot */
 .timeline > li::before {
   content: "";
   position: absolute;
-  left: 0.1875rem;
-  top: 0.45rem;
+  left: calc(-1 * var(--section-pl) - 0.5px - 0.25rem);
+  /* Align with <time text-sm leading-none>: center of line minus half dot */
+  top: calc(0.875rem * 0.5 - 0.25rem);
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;

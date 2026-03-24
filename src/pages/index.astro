@@ -1,4 +1,5 @@
 ---
+import HomeSection from "../components/HomeSection.astro";
 import Links from "../components/Links.astro";
 import Shields from "../components/Shields.astro";
 import Timeline from "../components/Timeline.astro";
@@ -16,8 +17,14 @@ import Root from "../layouts/Root.astro";
       </p>
     </div>
     <hr class="rule-dotted w-full" />
-    <Links />
-    <Shields />
-    <Timeline />
+    <HomeSection title="Reach out">
+      <Links />
+    </HomeSection>
+    <HomeSection title="Stack">
+      <Shields />
+    </HomeSection>
+    <HomeSection title="Experience">
+      <Timeline />
+    </HomeSection>
   </section>
 </Root>

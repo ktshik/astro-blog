@@ -29,33 +29,26 @@ const formatDate = (date: dayjs.Dayjs | string) =>
   typeof date === "string" ? date : date.format("MMMM YYYY");
 ---
 
-<div>
-  <p
-    class="text-sm font-medium uppercase tracking-[0.18em] text-[var(--fg-muted)] mb-3 subheading"
-  >
-    Experience
-  </p>
-  <ol class="timeline">
-    {
-      timelineSteps.map((timelineStep) => (
-        <li>
-          <time class="mb-1 block text-sm font-normal leading-none text-[var(--fg-muted)] tabular-nums">
-            {formatDate(timelineStep.startDate)}
-            {timelineStep.endDate && ` — ${formatDate(timelineStep.endDate)}`}
-          </time>
-          <h3 class="text-base font-medium text-[var(--fg)] !mb-1 tracking-tight">
-            {timelineStep.title}
-            <span class="font-normal text-[var(--fg-muted)]">
-              {" "}
-              — {timelineStep.company}
-            </span>
-          </h3>
-          <p class="text-sm font-normal leading-relaxed text-[var(--fg-muted)]">
-            {timelineStep.description}
-          </p>
-          {timelineStep.extra}
-        </li>
-      ))
-    }
-  </ol>
-</div>
+<ol class="timeline">
+  {
+    timelineSteps.map((timelineStep) => (
+      <li>
+        <time class="mb-1 block text-sm font-normal leading-none text-[var(--fg-muted)] tabular-nums">
+          {formatDate(timelineStep.startDate)}
+          {timelineStep.endDate && ` — ${formatDate(timelineStep.endDate)}`}
+        </time>
+        <h3 class="text-base font-medium text-[var(--fg)] !mb-1 tracking-tight">
+          {timelineStep.title}
+          <span class="font-normal text-[var(--fg-muted)]">
+            {" "}
+            — {timelineStep.company}
+          </span>
+        </h3>
+        <p class="text-sm font-normal leading-relaxed text-[var(--fg-muted)]">
+          {timelineStep.description}
+        </p>
+        {timelineStep.extra}
+      </li>
+    ))
+  }
+</ol>
