@@ -2,12 +2,14 @@
 const { data } = Astro.props;
 ---
 
-<table class="border-collapse">
+<table class="border-collapse text-sm">
   <thead>
     <tr>
       {
         data.headers.map((header: string) => (
-          <th class="border border-zinc-500 p-2">{header}</th>
+          <th class="border border-dotted p-2 [border-color:var(--line)] font-medium text-[var(--fg)]">
+            {header}
+          </th>
         ))
       }</tr
     >
@@ -17,7 +19,9 @@ const { data } = Astro.props;
       data.rows.map((row: string[]) => (
         <tr>
           {row.map((cell) => (
-            <td class="border border-zinc-500 p-2">{cell}</td>
+            <td class="border border-dotted p-2 [border-color:var(--line)] text-[var(--fg-muted)]">
+              {cell}
+            </td>
           ))}
         </tr>
       ))

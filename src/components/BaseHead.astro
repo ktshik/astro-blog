@@ -1,8 +1,5 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
 import { SITE_TITLE } from "../consts";
-import "../styles/global.css";
 
 interface Props {
   title: string;
@@ -17,6 +14,19 @@ const { title, description, image = "/gradient.png" } = Astro.props;
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
+<script is:inline>
+  (function () {
+    try {
+      const stored = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      const dark =
+        stored === "dark" || (stored !== "light" && prefersDark);
+      document.documentElement.classList.toggle("dark", dark);
+    } catch (_) {}
+  })();
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/png" href="/favicon.png" />
 <link rel="sitemap" href="/sitemap-index.xml" />

@@ -6,21 +6,21 @@ import Root from "../layouts/Root.astro";
 ---
 
 <Root>
-  <section class="flex flex-col gap-8">
-    <div
-      style="background: url('./gradient.png'); background-size: cover;"
-      class="w-full h-18 rounded-lg"
-    >
-    </div>
-    <div class="flex flex-col gap-3">
-      <h1>⚡ Hi, I'm Julian 🙂</h1>
-      <p>
-        I build <strong>human-centric</strong>, <strong
-          >socially-relevant</strong
-        >
+  <section class="flex flex-col gap-10">
+    <div class="flex flex-col gap-4">
+      <p
+        class="text-xs font-medium uppercase tracking-[0.2em] text-[var(--fg-muted)]"
+      >
+        Profile
+      </p>
+      <h1 class="!mb-0">Hi, I'm Julian</h1>
+      <p class="text-lg leading-relaxed text-[var(--fg-muted)] max-w-prose">
+        I build <strong class="font-medium text-[var(--fg)]">human-centric</strong>,
+        <strong class="font-medium text-[var(--fg)]">socially-relevant</strong>
         software products.
       </p>
     </div>
+    <hr class="rule-dotted w-full" />
     <Links />
     <Shields />
     <Timeline />

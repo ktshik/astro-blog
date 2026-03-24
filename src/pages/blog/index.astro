@@ -10,20 +10,26 @@ const posts = (await getCollection("blog")).sort(
 
 <Root>
   <section>
-    <h1 class="my-6">Blog</h1>
-    <ul>
+    <h1 class="my-2 mb-8 tracking-tight">Blog</h1>
+    <ul class="divide-y divide-dotted divide-[var(--line)]">
       {
         posts.map((post) => (
-          <a class="flex flex-col space-y-1 mb-4" href={`/blog/${post.id}`}>
-            <div class="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
-              <p class="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
+          <li class="py-4 first:pt-0">
+            <a
+              class="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-8"
+              href={`/blog/${post.id}`}
+            >
+              <time
+                class="shrink-0 text-sm tabular-nums text-[var(--fg-muted)] sm:w-[7.5rem]"
+                datetime={post.data.pubDate.toISOString()}
+              >
                 {formatDate(post.data.pubDate.toString(), false)}
-              </p>
-              <p class="text-neutral-900 dark:text-neutral-100 tracking-tight hover:underline">
+              </time>
+              <span class="text-[var(--fg)] tracking-tight group-hover:underline decoration-dotted underline-offset-4">
                 {post.data.title}
-              </p>
-            </div>
-          </a>
+              </span>
+            </a>
+          </li>
         ))
       }
     </ul>

@@ -29,24 +29,38 @@ const formatDate = (date: dayjs.Dayjs | string) =>
   typeof date === "string" ? date : date.format("MMMM YYYY");
 ---
 
-<ol class="relative mt-4 border-s border-zinc-200 dark:border-zinc-700">
-  {
-    timelineSteps.map((timelineStep) => (
-      <li class="mb-10 ms-4">
-        <div class="absolute w-3 h-3 bg-zinc-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-zinc-900 dark:bg-zinc-700" />
-        <time class="mb-1 text-sm font-normal leading-none text-zinc-400 dark:text-zinc-500">
-          {formatDate(timelineStep.startDate)}
-          {timelineStep.endDate && `- ${formatDate(timelineStep.endDate)}`}
-        </time>
-        <h3 class="text-lg font-semibold text-zinc-900 dark:text-white !mb-1">
-          {timelineStep.title}
-          <span class="font-normal"> - {timelineStep.company}</span>
-        </h3>
-        <p class="text-base font-normal text-zinc-500 dark:text-zinc-400">
-          {timelineStep.description}
-        </p>
-        {timelineStep.extra}
-      </li>
-    ))
-  }
-</ol>
+<div>
+  <p
+    class="text-xs font-medium uppercase tracking-[0.2em] text-[var(--fg-muted)] mb-4"
+  >
+    Experience
+  </p>
+  <ol
+    class="relative border-s border-dotted [border-color:var(--line)] ms-1.5"
+  >
+    {
+      timelineSteps.map((timelineStep) => (
+        <li class="relative mb-10 ms-5 last:mb-0">
+          <div
+            class="absolute w-2 h-2 rounded-full mt-1.5 -start-[5px] border border-dotted [border-color:var(--line)] bg-[var(--bg-elevated)]"
+          />
+          <time class="mb-1 block text-sm font-normal leading-none text-[var(--fg-muted)] tabular-nums">
+            {formatDate(timelineStep.startDate)}
+            {timelineStep.endDate && ` — ${formatDate(timelineStep.endDate)}`}
+          </time>
+          <h3 class="text-base font-medium text-[var(--fg)] !mb-1 tracking-tight">
+            {timelineStep.title}
+            <span class="font-normal text-[var(--fg-muted)]">
+              {" "}
+              — {timelineStep.company}
+            </span>
+          </h3>
+          <p class="text-[15px] font-normal leading-relaxed text-[var(--fg-muted)]">
+            {timelineStep.description}
+          </p>
+          {timelineStep.extra}
+        </li>
+      ))
+    }
+  </ol>
+</div>

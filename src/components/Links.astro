@@ -2,19 +2,26 @@
 import Link from "./Link.astro";
 ---
 
-<ul
-  class="font-sm flex flex-wrap space-x-0 gap-2 text-neutral-600 dark:text-neutral-300"
->
-  <li>
-    <Link label="email" href="mailto:jatkindev@gmail.com" />
-  </li>
-  <li>
-    <Link label="linkedin" href="https://linkedin.com/in/jatkindev" />
-  </li>
-  <li>
-    <Link label="github" href="https://github.com/jmdatkin" />
-  </li>
-  <li>
-    <Link label="x" href="https://x.com/jatkindev" />
-  </li>
-</ul>
+<div>
+  <p
+    class="text-xs font-medium uppercase tracking-[0.2em] text-[var(--fg-muted)] mb-3"
+  >
+    Contact
+  </p>
+  <ul
+    class="text-sm flex flex-wrap gap-x-6 gap-y-2 text-[var(--fg-muted)]"
+  >
+    <li>
+      <Link label="email" href="mailto:jatkindev@gmail.com" />
+    </li>
+    <li>
+      <Link label="linkedin" href="https://linkedin.com/in/jatkindev" />
+    </li>
+    <li>
+      <Link label="github" href="https://github.com/jmdatkin" />
+    </li>
+    <li>
+      <Link label="x" href="https://x.com/jatkindev" />
+    </li>
+  </ul>
+</div>

@@ -1,14 +1,15 @@
 ---
 import ArrowIcon from "./ArrowIcon.astro";
 
-const {href, label} = Astro.props;
+const { href, label } = Astro.props;
 ---
+
 <a
-    class="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 hover:underline decoration-dotted"
-    rel="noopener noreferrer"
-    target="_blank"
-    href={href}
+  class="inline-flex items-center gap-2 text-[var(--fg-muted)] transition-colors hover:text-[var(--fg)] underline decoration-dotted underline-offset-[0.2em] decoration-[var(--line)]"
+  rel="noopener noreferrer"
+  target="_blank"
+  href={href}
 >
-    <ArrowIcon />
-    <p class="ml-2 h-7">{label}</p>
+  <ArrowIcon />
+  <span class="leading-none py-1">{label}</span>
 </a>

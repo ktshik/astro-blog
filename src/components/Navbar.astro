@@ -1,5 +1,7 @@
 ---
 import classnames from "classnames";
+import ThemeToggle from "./ThemeToggle.astro";
+
 const pathname = Astro.url.pathname;
 
 const navItems = {
@@ -12,31 +14,26 @@ const navItems = {
 };
 ---
 
-<aside class="tracking-tight">
-  <div class="lg:sticky lg:top-20">
+<header class="pb-6 mb-2 border-b border-dotted [border-color:var(--line)]">
+  <div class="flex flex-row flex-wrap items-center justify-between gap-4">
     <nav
-      class="flex flex-row items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
-      id="nav"
+      class="flex flex-row items-center gap-6 text-sm font-medium tracking-wide text-[var(--fg-muted)]"
+      aria-label="Primary"
     >
-      <div class="flex flex-row space-x-4 pr-10">
-        {
-          Object.entries(navItems).map(([path, { name }]) => {
-            return (
-              <a
-                class={classnames({
-                  "py-8": true,
-                  "hover:underline": true,
-                  // "text-white": true,
-                  // underline: path === pathname,
-                })}
-                href={path}
-              >
-                {name}
-              </a>
-            );
-          })
-        }
-      </div>
+      {
+        Object.entries(navItems).map(([path, { name }]) => (
+          <a
+            class={classnames(
+              "py-1 transition-colors hover:text-[var(--fg)]",
+              path === pathname && "text-[var(--fg)]"
+            )}
+            href={path}
+          >
+            {name}
+          </a>
+        ))
+      }
     </nav>
+    <ThemeToggle />
   </div>
-</aside>
+</header>

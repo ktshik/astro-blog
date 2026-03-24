@@ -10,15 +10,18 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <Root title={title} description={description} image={heroImage}>
-  <a class="inline-flex hover:underline py-6" href="/blog"
-    ><BackArrowIcon /> Back to posts</a
+  <a
+    class="inline-flex items-center gap-2 py-2 -mt-2 mb-6 text-sm text-[var(--fg-muted)] transition-colors hover:text-[var(--fg)]"
+    href="/blog"
   >
+    <BackArrowIcon /><span class="underline decoration-dotted underline-offset-4">Back to posts</span>
+  </a>
   <article>
     <div class="hero-image !mb-6">
       {
         heroImage && (
           <img
-            class="w-full h-[240px] object-cover rounded-lg"
+            class="w-full h-[240px] object-cover rounded-sm border border-dotted [border-color:var(--line)]"
             src={heroImage}
             alt=""
           />
@@ -26,13 +29,13 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       }
     </div>
     <div class="prose">
-      <div class="title !mb-6">
+      <div class="title !mb-8 pb-8 border-b border-dotted [border-color:var(--line)]">
         <h1>{title}</h1>
-        <div class="date">
+        <div class="date mt-3 text-sm text-[var(--fg-muted)] tabular-nums">
           <FormattedDate date={pubDate} />
           {
             updatedDate && (
-              <div class="last-updated-on">
+              <div class="last-updated-on mt-1">
                 Last updated on <FormattedDate date={updatedDate} />
               </div>
             )
