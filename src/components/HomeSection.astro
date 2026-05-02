@@ -6,15 +6,9 @@ interface Props {
   title: string;
   id?: string;
   class?: string;
-  hudVariant?: "purple" | "orange";
 }
 
-const {
-  title,
-  id,
-  class: className,
-  hudVariant = "purple",
-} = Astro.props;
+const { title, id, class: className } = Astro.props;
 const headingId = id ?? `home-${title.toLowerCase().replace(/\s+/g, "-")}`;
 ---
 
@@ -23,7 +17,7 @@ const headingId = id ?? `home-${title.toLowerCase().replace(/\s+/g, "-")}`;
   aria-labelledby={headingId}
 >
   <div class="section">
-    <HudFrame variant={hudVariant}>
+    <HudFrame>
       <p
         id={headingId}
         class="font-[JetBrains_Mono] text-xs font-semibold uppercase tracking-[0.22em] text-[var(--fg-muted)] mb-4"

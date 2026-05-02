@@ -1,15 +1,12 @@
 ---
 interface Props {
   class?: string;
-  variant?: "purple" | "orange";
 }
 
-const { class: className, variant = "purple" } = Astro.props;
+const { class: className } = Astro.props;
 ---
 
-<div
-  class:list={["hud-frame", variant === "orange" && "hud-frame--orange", className]}
->
+<div class:list={["hud-frame", className]}>
   <span class="hud-bracket hud-bracket--tl" aria-hidden="true"></span>
   <span class="hud-bracket hud-bracket--tr" aria-hidden="true"></span>
   <span class="hud-bracket hud-bracket--bl" aria-hidden="true"></span>
