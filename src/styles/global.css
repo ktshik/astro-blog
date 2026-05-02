@@ -37,10 +37,11 @@
 html.dark {
   color-scheme: dark;
 
-  --bg: #0d0d0d;
-  --bg-elevated: #141414;
-  --fg: #d1d5db;
-  --fg-muted: #9ca3af;
+  /* Dark neutrals: faint warm yellow-orange hue (near-black / warm gray) */
+  --bg: #0f0e0c;
+  --bg-elevated: #171614;
+  --fg: #d5d3cf;
+  --fg-muted: #9d9892;
   --line: color-mix(in srgb, var(--fg) 22%, transparent);
   --line-faint: color-mix(in srgb, var(--fg) 12%, transparent);
   --grid-line: color-mix(in srgb, var(--fg) 14%, transparent);
