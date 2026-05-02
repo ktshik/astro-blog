@@ -1,24 +1,36 @@
 ---
-import classNames from 'classnames';
+import classNames from "classnames";
+import HudFrame from "./HudFrame.astro";
 
 interface Props {
   title: string;
   id?: string;
   class?: string;
+  hudVariant?: "purple" | "orange";
 }
 
-const { title, id, class: className } = Astro.props;
+const {
+  title,
+  id,
+  class: className,
+  hudVariant = "purple",
+} = Astro.props;
 const headingId = id ?? `home-${title.toLowerCase().replace(/\s+/g, "-")}`;
 ---
 
-<section class={classNames("home-section", className)} aria-labelledby={headingId}>
+<section
+  class={classNames("home-section portfolio-section-enter", className)}
+  aria-labelledby={headingId}
+>
   <div class="section">
-    <p
-      id={headingId}
-      class="text-sm font-medium uppercase tracking-[0.18em] text-[var(--fg-muted)] mb-3"
-    >
-      {title}
-  </p>
-    <slot />
+    <HudFrame variant={hudVariant}>
+      <p
+        id={headingId}
+        class="font-[JetBrains_Mono] text-xs font-semibold uppercase tracking-[0.22em] text-[var(--fg-muted)] mb-4"
+      >
+        {title}
+      </p>
+      <slot />
+    </HudFrame>
   </div>
 </section>

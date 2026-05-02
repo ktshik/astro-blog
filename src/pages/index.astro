@@ -1,4 +1,5 @@
 ---
+import HudFrame from "../components/HudFrame.astro";
 import HomeSection from "../components/HomeSection.astro";
 import Links from "../components/Links.astro";
 import Shields from "../components/Shields.astro";
@@ -7,23 +8,39 @@ import Root from "../layouts/Root.astro";
 ---
 
 <Root>
-  <section class="flex flex-col gap-9">
-    <div class="flex flex-col gap-4">
-      <h1 class="!mb-0">ktshik</h1>
-      <p class="text-lg leading-relaxed text-[var(--fg-muted)] max-w-prose">
-        I build <strong class="font-medium text-[var(--fg)]">human-centric</strong>,
-        <strong class="font-medium text-[var(--fg)]">socially-relevant</strong>
-        software products.
-      </p>
+  <section class="portfolio-page flex flex-col gap-10">
+    <div class="portfolio-hero-enter flex flex-col gap-5">
+      <HudFrame variant="orange" class="hud-frame--flush">
+        <div class="px-4 py-5 sm:px-6 sm:py-6">
+          <p
+            class="font-[JetBrains_Mono] text-[0.6875rem] font-medium uppercase tracking-[0.28em] text-[var(--accent-orange)] mb-3"
+          >
+            Portfolio / Systems
+          </p>
+          <h1 class="!mb-2 font-[JetBrains_Mono] text-3xl sm:text-4xl font-semibold tracking-tight text-[var(--fg)]">
+            Julian Atkin
+          </h1>
+          <p class="font-[JetBrains_Mono] text-sm text-[var(--fg-muted)] mb-4">
+            <span class="text-[var(--fg)]">ktshik</span>
+            <span class="mx-2 text-[var(--line)]">/</span>
+            backend · infra · product engineering
+          </p>
+          <p class="text-lg leading-relaxed text-[var(--fg-muted)] max-w-prose border-t border-[var(--line)] pt-4">
+            I design and ship <strong class="font-semibold text-[var(--fg)]"
+              >reliable systems</strong
+            >: APIs, data pipelines, and cloud infrastructure — with attention to
+            performance, observability, and maintainability.
+          </p>
+        </div>
+      </HudFrame>
     </div>
-    <!-- <hr class="rule-dotted w-full" /> -->
-    <HomeSection title="Reach out">
+    <HomeSection title="Contact" hudVariant="purple">
       <Links />
     </HomeSection>
-    <HomeSection title="Stack">
+    <HomeSection title="Stack" hudVariant="orange">
       <Shields />
     </HomeSection>
-    <HomeSection title="Experience">
+    <HomeSection title="Experience" hudVariant="purple">
       <Timeline />
     </HomeSection>
   </section>

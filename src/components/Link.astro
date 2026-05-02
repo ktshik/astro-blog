@@ -5,7 +5,7 @@ const { href, label } = Astro.props;
 ---
 
 <a
-  class="inline-flex items-center gap-2 text-[var(--fg-muted)] transition-colors hover:text-[var(--fg)] underline decoration-dotted underline-offset-[0.2em] decoration-[var(--line)]"
+  class="inline-flex items-center gap-2 text-[var(--fg-muted)] transition-[color,decoration-color] duration-200 ease-out hover:text-[var(--accent-orange)] underline decoration-dotted underline-offset-[0.2em] decoration-[var(--line)] hover:decoration-[var(--accent-orange)]"
   rel="noopener noreferrer"
   target="_blank"
   href={href}

@@ -3,23 +3,26 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 ::selection {
-  background-color: color-mix(in srgb, var(--accent) 32%, var(--line));
+  background-color: color-mix(in srgb, var(--accent-orange) 38%, var(--bg));
   color: var(--fg);
 }
 
 :root {
   color-scheme: light;
 
-  --accent: #5b7aad;
-  --accent-muted: color-mix(in srgb, var(--accent) 45%, #64748b);
+  --accent-orange: #ff8c00;
+  --accent-purple: #a855f7;
+  --accent: var(--accent-orange);
+  --accent-muted: color-mix(in srgb, var(--accent-orange) 55%, #64748b);
 
-  --bg: #f3f5f8;
-  --bg-elevated: #fafbfc;
-  --fg: #161a22;
-  --fg-muted: #4a5568;
-  --line: color-mix(in srgb, var(--accent) 22%, #94a3b8 78%);
-  --line-faint: color-mix(in srgb, var(--accent) 14%, transparent);
-  --grid-line: color-mix(in srgb, var(--accent) 11%, transparent);
+  --bg: #e8e8ea;
+  --bg-elevated: #f0f0f2;
+  --fg: #0d0d0d;
+  --fg-muted: #52525b;
+  --line: color-mix(in srgb, var(--fg) 18%, transparent);
+  --line-faint: color-mix(in srgb, var(--fg) 10%, transparent);
+  --grid-line: color-mix(in srgb, var(--fg) 8%, transparent);
+  --rail: color-mix(in srgb, var(--accent-orange) 35%, var(--line));
 
   --sh-class: #3d5a80;
   --sh-identifier: #2c3340;
@@ -35,13 +38,14 @@
 html.dark {
   color-scheme: dark;
 
-  --bg: #0b0d11;
-  --bg-elevated: #11141a;
-  --fg: #e6e9ef;
-  --fg-muted: #9aa3b2;
-  --line: color-mix(in srgb, var(--accent) 28%, #475569 72%);
-  --line-faint: color-mix(in srgb, var(--accent) 20%, transparent);
-  --grid-line: color-mix(in srgb, var(--accent) 14%, transparent);
+  --bg: #0d0d0d;
+  --bg-elevated: #141414;
+  --fg: #d1d5db;
+  --fg-muted: #9ca3af;
+  --line: color-mix(in srgb, var(--fg) 22%, transparent);
+  --line-faint: color-mix(in srgb, var(--fg) 12%, transparent);
+  --grid-line: color-mix(in srgb, var(--accent-purple) 12%, transparent);
+  --rail: color-mix(in srgb, var(--accent-orange) 45%, #27272a);
 
   --sh-class: #7eb8ff;
   --sh-identifier: #e8eaef;
@@ -56,7 +60,7 @@ html {
 }
 
 body {
-  @apply font-[Inter] text-[1.09375rem];
+  @apply font-[Inter] text-[1.0625rem];
   position: relative;
   background: var(--bg);
   color: var(--fg);
@@ -70,8 +74,20 @@ body::before {
   pointer-events: none;
   background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 32px 32px;
-  mask-image: radial-gradient(ellipse 85% 70% at 50% 0%, black 20%, transparent 72%);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse 90% 65% at 50% -10%, black 35%, transparent 75%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body::before {
+    animation: grid-drift 48s linear infinite;
+  }
+}
+
+@keyframes grid-drift {
+  to {
+    background-position: 24px 24px, 24px 24px;
+  }
 }
 
 .site-content {
@@ -107,7 +123,7 @@ body::before {
 }
 
 .prose a:hover {
-  color: var(--accent-muted);
+  color: var(--accent-purple);
 }
 
 .prose .anchor:after {
@@ -120,14 +136,14 @@ body::before {
 }
 
 .prose pre {
-  @apply rounded-sm overflow-x-auto py-2 px-3 text-sm;
+  @apply overflow-x-auto py-2 px-3 text-sm rounded-none;
   background: var(--bg-elevated);
-  border: 1px dotted var(--line);
+  border: 1px solid var(--line);
 }
 
 .prose code {
-  @apply px-1 py-0.5 rounded-sm;
-  background: color-mix(in srgb, var(--accent) 8%, var(--bg-elevated));
+  @apply px-1 py-0.5 rounded-none font-[JetBrains_Mono] text-[0.92em];
+  background: color-mix(in srgb, var(--accent-orange) 12%, var(--bg-elevated));
 }
 
 .prose pre code {
@@ -246,17 +262,23 @@ h3 {
   width: 2.25rem;
   height: 2.25rem;
   padding: 0;
-  border-radius: 2px;
+  border-radius: 0;
+  border: 1px solid var(--line);
   background: transparent;
   color: var(--fg-muted);
   cursor: pointer;
-  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .theme-toggle:hover {
-  color: var(--fg);
-  border-color: var(--line-faint);
-  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  color: var(--accent-orange);
+  border-color: color-mix(in srgb, var(--accent-orange) 65%, var(--line));
+  background: color-mix(in srgb, var(--accent-orange) 8%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent-purple) 25%, transparent);
 }
 
 .theme-toggle__icon--moon {
@@ -273,7 +295,187 @@ html.dark .theme-toggle__icon--moon {
 
 .section {
   --section-pl: 1.25rem;
-  @apply border-l border-dotted [border-color:var(--line)] py-3 px-[var(--section-pl)];
+  @apply border-l-2 py-3 px-[var(--section-pl)];
+  border-color: var(--rail);
+}
+
+/* HUD frame */
+.hud-frame {
+  position: relative;
+  --hud-len: 14px;
+  --hud-thick: 2px;
+  --hud-color: var(--accent-purple);
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg-elevated) 88%, transparent);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hud-frame {
+    transition: none;
+  }
+}
+
+.hud-frame--orange {
+  --hud-color: var(--accent-orange);
+}
+
+.hud-frame:hover {
+  border-color: color-mix(in srgb, var(--hud-color) 45%, var(--line));
+  box-shadow: 0 0 24px color-mix(in srgb, var(--hud-color) 12%, transparent);
+}
+
+.hud-frame__inner {
+  position: relative;
+  z-index: 1;
+  padding: 1rem 1.25rem;
+}
+
+.hud-frame--flush .hud-frame__inner {
+  padding: 0;
+}
+
+.hud-bracket {
+  position: absolute;
+  width: var(--hud-len);
+  height: var(--hud-len);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.92;
+  transition: opacity 0.25s ease;
+}
+
+.hud-frame:hover .hud-bracket {
+  opacity: 1;
+}
+
+.hud-bracket--tl {
+  top: -1px;
+  left: -1px;
+  border-top: var(--hud-thick) solid var(--hud-color);
+  border-left: var(--hud-thick) solid var(--hud-color);
+}
+
+.hud-bracket--tr {
+  top: -1px;
+  right: -1px;
+  border-top: var(--hud-thick) solid var(--hud-color);
+  border-right: var(--hud-thick) solid var(--hud-color);
+}
+
+.hud-bracket--bl {
+  bottom: -1px;
+  left: -1px;
+  border-bottom: var(--hud-thick) solid var(--hud-color);
+  border-left: var(--hud-thick) solid var(--hud-color);
+}
+
+.hud-bracket--br {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: var(--hud-thick) solid var(--hud-color);
+  border-right: var(--hud-thick) solid var(--hud-color);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hud-bracket {
+    animation: hud-corner-glow 3.2s ease-in-out infinite;
+  }
+
+  .hud-frame:hover .hud-bracket {
+    animation: none;
+  }
+}
+
+@keyframes hud-corner-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 2px color-mix(in srgb, var(--hud-color) 40%, transparent));
+  }
+  50% {
+    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--hud-color) 55%, transparent));
+  }
+}
+
+.portfolio-hero-enter {
+  animation: portfolio-fade-up 0.6s ease-out both;
+}
+
+.portfolio-section-enter {
+  animation: portfolio-fade-up 0.55s ease-out both;
+}
+
+@keyframes portfolio-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.portfolio-page > .home-section:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.portfolio-page > .home-section:nth-child(3) {
+  animation-delay: 0.18s;
+}
+
+.portfolio-page > .home-section:nth-child(4) {
+  animation-delay: 0.26s;
+}
+
+.nav-primary a[data-active="true"] {
+  position: relative;
+}
+
+.nav-primary a[data-active="true"]::before,
+.nav-primary a[data-active="true"]::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nav-primary a[data-active="true"]::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--accent-orange);
+  border-left: 2px solid var(--accent-orange);
+}
+
+.nav-primary a[data-active="true"]::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--accent-purple);
+  border-right: 2px solid var(--accent-purple);
+}
+
+.nav-primary a[data-active="false"]:hover {
+  color: color-mix(in srgb, var(--accent-purple) 75%, var(--fg-muted));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-hero-enter,
+  .portfolio-section-enter {
+    animation: none;
+  }
+
+  body::before {
+    animation: none;
+  }
+
+  .hud-bracket {
+    animation: none;
+  }
 }
 
 /* Timeline: no inner rail — dots sit on .section’s left border (centered on the 1px line) */
@@ -298,14 +500,13 @@ html.dark .theme-toggle__icon--moon {
 .timeline > li::before {
   content: "";
   position: absolute;
-  left: calc(-1 * var(--section-pl) - 0.5px - 0.25rem);
-  /* Align with <time text-sm leading-none>: center of line minus half dot */
-  top: calc(0.875rem * 0.5 - 0.25rem);
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
+  left: calc(-1 * var(--section-pl) - 0.5px - 0.28125rem);
+  top: calc(0.875rem * 0.5 - 0.28125rem);
+  width: 0.5625rem;
+  height: 0.5625rem;
+  border-radius: 0;
   background: var(--bg);
-  border: 1px solid var(--line);
+  border: 2px solid var(--accent-orange);
   box-sizing: border-box;
   z-index: 1;
 }

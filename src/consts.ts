@@ -3,4 +3,4 @@
 
 export const SITE_TITLE = "Julian Atkin";
 export const SITE_DESCRIPTION =
-  "I build human-centric, socially-relevant software products.";
+  "Backend engineer and technical builder — systems, APIs, and infrastructure.";
