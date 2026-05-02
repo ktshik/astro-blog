@@ -11,13 +11,13 @@ const posts = (await getCollection("blog")).sort(
 
 <Root title={`Writing — ${SITE_TITLE}`}>
   <section>
-    <h1 class="mb-6 font-[JetBrains_Mono] text-3xl font-semibold tracking-tight">
+    <h1 class="mb-7 font-[JetBrains_Mono] text-4xl font-semibold tracking-tight">
       Writing
     </h1>
     <ul class="divide-y divide-solid divide-[var(--line)] border-t border-b border-[var(--line)]">
       {
         posts.map((post) => (
-          <li class="py-4 first:pt-0 transition-[background-color] duration-200 ease-out hover:bg-[color-mix(in_srgb,var(--accent-orange)_6%,transparent)]">
+          <li class="py-5 first:pt-0 transition-[background-color] duration-200 ease-out hover:bg-[color-mix(in_srgb,var(--accent-orange)_6%,transparent)]">
             <a
               class="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-8 sm:-mx-3 sm:px-3 py-1 transition-[transform,color] duration-200 ease-out hover:translate-x-0.5"
               href={`/blog/${post.id}`}
@@ -28,7 +28,7 @@ const posts = (await getCollection("blog")).sort(
               >
                 {formatDate(post.data.pubDate.toString(), false)}
               </time>
-              <span class="text-[var(--fg)] tracking-tight group-hover:text-[var(--accent-orange)] underline-offset-4 decoration-dotted group-hover:underline">
+              <span class="text-lg text-[var(--fg)] tracking-tight group-hover:text-[var(--accent-orange)] underline-offset-4 decoration-dotted group-hover:underline">
                 {post.data.title}
               </span>
             </a>

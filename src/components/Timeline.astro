@@ -33,18 +33,18 @@ const formatDate = (date: dayjs.Dayjs | string) =>
   {
     timelineSteps.map((timelineStep) => (
       <li>
-        <time class="mb-1 block text-sm font-normal leading-none text-[var(--fg-muted)] tabular-nums">
+        <time class="mb-1 block text-base font-normal leading-none text-[var(--fg-muted)] tabular-nums">
           {formatDate(timelineStep.startDate)}
           {timelineStep.endDate && ` — ${formatDate(timelineStep.endDate)}`}
         </time>
-        <h3 class="text-base font-medium text-[var(--fg)] !mb-1 tracking-tight">
+        <h3 class="text-lg font-medium text-[var(--fg)] !mb-1 tracking-tight">
           {timelineStep.title}
           <span class="font-normal text-[var(--fg-muted)]">
             {" "}
             — {timelineStep.company}
           </span>
         </h3>
-        <p class="text-sm font-normal leading-relaxed text-[var(--fg-muted)]">
+        <p class="text-base font-normal leading-relaxed text-[var(--fg-muted)]">
           {timelineStep.description}
         </p>
         {timelineStep.extra}
