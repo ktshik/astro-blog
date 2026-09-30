@@ -3,8 +3,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 ::selection {
-  background-color: var(--fg);
-  color: var(--bg);
+  background-color: color-mix(in srgb, var(--fg) 12%, transparent);
+  color: var(--fg);
 }
 
 :root {
