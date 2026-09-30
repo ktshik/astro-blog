@@ -14,22 +14,19 @@ const navItems = {
 };
 ---
 
-<header
-  class="pb-6 mb-3 border-b-2 [border-color:var(--line)]"
->
+<header class="pb-6 mb-3">
   <div class="flex flex-row flex-wrap items-center justify-between gap-4">
     <nav
-      class="nav-primary flex flex-row items-center gap-1 sm:gap-2 text-base font-[JetBrains_Mono] font-medium tracking-tight text-[var(--fg-muted)]"
+      class="nav-primary flex flex-row items-center gap-5 sm:gap-6 text-base font-[JetBrains_Mono] font-medium tracking-tight text-[var(--fg-muted)]"
       aria-label="Primary"
     >
       {
         Object.entries(navItems).map(([path, { name }]) => (
           <a
             class={classnames(
-              "nav-link-hud relative px-3 py-1.5 transition-[color,background-color,box-shadow] duration-200 ease-out",
+              "transition-colors duration-200 ease-out",
               "hover:text-[var(--fg)]",
-              path === pathname &&
-                "text-[var(--accent-orange)] bg-[color-mix(in_srgb,var(--accent-orange)_8%,transparent)]"
+              path === pathname && "text-[var(--fg)]"
             )}
             href={path}
             data-active={path === pathname ? "true" : "false"}

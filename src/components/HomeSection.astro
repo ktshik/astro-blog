@@ -1,6 +1,5 @@
 ---
 import classNames from "classnames";
-import HudFrame from "./HudFrame.astro";
 
 interface Props {
   title: string;
@@ -13,18 +12,16 @@ const headingId = id ?? `home-${title.toLowerCase().replace(/\s+/g, "-")}`;
 ---
 
 <section
-  class={classNames("home-section portfolio-section-enter", className)}
+  class={classNames("home-section", className)}
   aria-labelledby={headingId}
 >
   <div class="section">
-    <HudFrame>
-      <p
-        id={headingId}
-        class="font-[JetBrains_Mono] text-sm font-semibold uppercase tracking-[0.22em] text-[var(--fg-muted)] mb-4"
-      >
-        {title}
-      </p>
-      <slot />
-    </HudFrame>
+    <p
+      id={headingId}
+      class="font-[JetBrains_Mono] text-sm font-semibold uppercase tracking-[0.22em] text-[var(--fg-muted)] mb-4"
+    >
+      {title}
+    </p>
+    <slot />
   </div>
 </section>

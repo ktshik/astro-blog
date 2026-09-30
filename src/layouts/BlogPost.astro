@@ -11,17 +11,17 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 <Root title={title} description={description} image={heroImage}>
   <a
-    class="inline-flex items-center gap-2 py-1.5 -mt-1 mb-6 font-[JetBrains_Mono] text-base text-[var(--fg-muted)] transition-[color,transform] duration-200 ease-out hover:text-[var(--accent-orange)] hover:-translate-x-px"
+    class="inline-flex items-center gap-2 py-1.5 -mt-1 mb-6 font-[JetBrains_Mono] text-base text-[var(--fg-muted)] transition-colors duration-200 ease-out hover:text-[var(--fg)]"
     href="/blog"
   >
-    <BackArrowIcon /><span class="underline decoration-dotted underline-offset-4">Back to posts</span>
+    <BackArrowIcon /><span class="underline underline-offset-4">Back to posts</span>
   </a>
   <article>
     <div class="hero-image !mb-5">
       {
         heroImage && (
           <img
-            class="w-full h-[260px] object-cover rounded-none border border-[var(--line)]"
+            class="w-full h-[260px] object-cover"
             src={heroImage}
             alt=""
           />
@@ -29,7 +29,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
       }
     </div>
     <div class="prose">
-      <div class="title !mb-8 pb-6 border-b-2 border-[var(--line)]">
+      <div class="title !mb-8">
         <h1 class="font-[JetBrains_Mono] font-semibold">{title}</h1>
         <div class="date mt-3 text-base text-[var(--fg-muted)] tabular-nums">
           <FormattedDate date={pubDate} />
